@@ -13,18 +13,18 @@ class ComplaintController extends Controller
    * Display a listing of all resource.
    */
   public function all() {
-    $complaint = Complaint::with('user')->get();
+    $complaints = Complaint::with('user')->get();
 
-    return ComplaintResource::collection($complaint);
+    return ComplaintResource::collection($complaints);
   }
 
   /**
    * Display a listing of the resource for specific user.
    */
   public function index() {
-    $complaint = Complaint::with('user')->where('user_id', Auth::user()->id)->get();
+    $complaints = Complaint::with('user')->where('user_id', Auth::user()->id)->get();
 
-    return ComplaintResource::collection($complaint);
+    return ComplaintResource::collection($complaints);
   }
 
   /**
