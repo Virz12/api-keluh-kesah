@@ -47,11 +47,11 @@ class User extends Authenticatable
   }
 
   // Relation
-  public function complaint() {
+  public function complaints() {
     return $this->hasMany(Complaint::class);
   }
 
-  public function comment() {
+  public function comments() {
     return $this->hasMany(Comment::class);
   }
 }

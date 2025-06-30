@@ -19,12 +19,10 @@ class CommentSeeder extends Seeder
     foreach ($complaints as $complaint) {
       $complaint->comment()->createMany([
         [
-          'complaint_id' => 1,
           'user_id' => 1,
-          'content' => 'Isi komentar...',
+          'content' => 'Isi komentaran...',
         ],
         [
-          'complaint_id' => 1,
           'user_id' => 2,
           'content' => 'Isi komentar...',
         ],
