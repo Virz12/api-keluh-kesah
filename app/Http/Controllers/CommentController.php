@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
+use App\Models\Complaint;
 use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
@@ -26,9 +27,17 @@ class CommentController extends Controller
   {
     $validated = $request->validated();
 
+    $complaint = Complaint::find($validated['complaint_id']);
+
+    if($complaint->can_comment == false) {
+      return response()->json([
+        'message' => 'Komentar tidak diizinkan untuk keluhan ini'
+      ], 403);
+    }
+
     $comment = Comment::create([
       'user_id' => Auth::user()->id,
-      'complaint_id' => $validated['id'],
+      'complaint_id' => $complaint->id,
       'content' => $validated['content'],
     ]);
 

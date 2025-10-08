@@ -14,8 +14,14 @@ class CommentRequest extends FormRequest
   public function rules(): array
   {
     return [
-      'id' => 'required|exists:complaints,id',
+      'complaint_id' => 'required|exists:complaints,id',
       'content' => 'required|string'
+    ];
+  }
+
+  public function messages(): array {
+    return [
+      'complaint_id.exists' => 'Keluhan tidak ditemukan'
     ];
   }
 }
