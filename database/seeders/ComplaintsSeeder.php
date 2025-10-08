@@ -2,9 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Complaint;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ComplaintsSeeder extends Seeder
@@ -19,7 +17,7 @@ class ComplaintsSeeder extends Seeder
 
     // Create complaints
     foreach ($users as $user) {
-      $user->complaint()->create([
+      $user->complaints()->create([
         'title' => 'Keluhan dari ' . $user->name,
         'content' => 'Isi keluhan...',
         'can_comment' => true

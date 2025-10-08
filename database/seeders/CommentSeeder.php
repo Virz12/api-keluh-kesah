@@ -17,7 +17,7 @@ class CommentSeeder extends Seeder
     $complaints = Complaint::all();
 
     foreach ($complaints as $complaint) {
-      $complaint->comment()->createMany([
+      $complaint->comments()->createMany([
         [
           'user_id' => 1,
           'content' => 'Isi komentaran...',
