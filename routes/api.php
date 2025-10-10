@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\ReflectionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,9 @@ Route::get('/like/{id}', [LikeController::class, 'like'])->middleware('auth:sanc
 
 // Comment Route
 Route::apiResource('/comment', CommentController::class)->middleware('auth:sanctum');
+
+// Reflection Route
+Route::apiResource('/reflection', ReflectionController::class)->middleware('auth:sanctum');
 
 Route::get('/user', function (Request $request) {
     return $request->user();
