@@ -4,14 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Complaint extends Model
+class Likes extends Model
 {
     // The attributes that are mass assignable.
     protected $fillable = [
         'user_id',
-        'title',
-        'content',
-        'can_comment',
+        'complaint_id',
     ];
 
     // Relation
@@ -20,13 +18,8 @@ class Complaint extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function likes()
+    public function complaint()
     {
-        return $this->hasMany(Likes::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
+        return $this->belongsTo(Complaint::class);
     }
 }
