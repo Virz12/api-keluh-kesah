@@ -23,6 +23,7 @@ class ComplaintResource extends JsonResource
             'likes' => count(Likes::where('complaint_id', $this->id)->get()),
             'can_comment' => (bool) $this->can_comment,
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'time_passed' => $this->created_at->diffForHumans(),
         ];
     }
 }
