@@ -18,8 +18,8 @@ class CommentResource extends JsonResource
     return [
       'id' => $this->id,
       'commented_by' => $this->user->name,
-      'complaint_name' => $this->whenLoaded('complaint') ? $this->complaint->title : null,
-      'content' => $this->content
+      'content' => $this->content,
+      'time_passed' => $this->created_at->diffForHumans(),
     ];
   }
 }

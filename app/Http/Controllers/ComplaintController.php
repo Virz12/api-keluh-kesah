@@ -54,9 +54,9 @@ class ComplaintController extends Controller
      */
     public function show(string $id)
     {
-        $complaint = Complaint::with('comments.user')->where('id', $id)->get();
+        $complaint = Complaint::with('comments.user')->findOrFail($id);
 
-        return ComplaintResource::collection($complaint);
+        return new ComplaintResource($complaint);
     }
 
     /**
