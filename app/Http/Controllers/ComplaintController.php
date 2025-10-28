@@ -38,7 +38,6 @@ class ComplaintController extends Controller
 
         $complaint = Complaint::create([
             'user_id' => Auth::user()->id,
-            'title' => $validated['title'],
             'content' => $validated['content'],
             'can_comment' => $validated['can_comment'],
         ]);

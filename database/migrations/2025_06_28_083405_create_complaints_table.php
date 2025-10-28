@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('complaints', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->delete('cascade');
-            $table->string('title');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->text('content');
             $table->unsignedBigInteger('likes_count')->default(0);
             $table->boolean('can_comment')->default(true);

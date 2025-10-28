@@ -18,8 +18,7 @@ class ComplaintsSeeder extends Seeder
         // Create complaints
         foreach ($users as $user) {
             $user->complaints()->create([
-                'title' => 'Keluhan dari '.$user->name,
-                'content' => 'Isi keluhan...',
+                'content' => 'Isi keluhan...'.$user->name,
                 'can_comment' => true,
             ]);
         }

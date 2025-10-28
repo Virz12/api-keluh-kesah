@@ -9,7 +9,6 @@ class Complaint extends Model
     // The attributes that are mass assignable.
     protected $fillable = [
         'user_id',
-        'title',
         'content',
         'can_comment',
     ];
@@ -22,11 +21,11 @@ class Complaint extends Model
 
     public function likes()
     {
-        return $this->hasMany(Likes::class);
+        return $this->hasMany(Likes::class, 'user_id');
     }
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, 'complaint_id');
     }
 }

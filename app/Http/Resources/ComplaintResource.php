@@ -17,8 +17,8 @@ class ComplaintResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'created_by_id' => $this->user->id,
             'created_by' => $this->user->name,
-            'title' => $this->title,
             'content' => $this->content,
             'likes' => count(Likes::where('complaint_id', $this->id)->get()),
             'can_comment' => (bool) $this->can_comment,

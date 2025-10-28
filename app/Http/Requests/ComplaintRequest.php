@@ -14,8 +14,7 @@ class ComplaintRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|string',
-            'content' => 'required|string',
+            'content' => 'required|string|max:2500',
             'can_comment' => 'required|boolean|in:0,1',
         ];
     }

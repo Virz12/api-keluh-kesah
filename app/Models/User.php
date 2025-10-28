@@ -48,10 +48,14 @@ class User extends Authenticatable
 
   // Relation
   public function complaints() {
-    return $this->hasMany(Complaint::class);
+    return $this->hasMany(Complaint::class, 'user_id');
   }
 
   public function comments() {
-    return $this->hasMany(Comment::class);
+    return $this->hasMany(Comment::class, 'user_id');
+  }
+
+  public function reflections() {
+    return $this->hasMany(Reflection::class, 'user_id');
   }
 }
