@@ -15,7 +15,7 @@ class CommentRequest extends FormRequest
     {
         return [
             'complaint_id' => 'required|exists:complaints,id',
-            'content' => 'required|string',
+            'content' => 'required|string|max:500',
         ];
     }
 
