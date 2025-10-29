@@ -21,6 +21,9 @@ class ComplaintResource extends JsonResource
             'created_by' => $this->user->name,
             'content' => $this->content,
             'likes' => count(Likes::where('complaint_id', $this->id)->get()),
+            'is_liked_by_auth_user' => Likes::where('complaint_id', $this->id)
+                ->where('user_id', $request->user()->id)
+                ->exists(),
             'can_comment' => (bool) $this->can_comment,
             'comments' => CommentResource::collection($this->whenLoaded('comments')),
             'time_passed' => $this->created_at->diffForHumans(),

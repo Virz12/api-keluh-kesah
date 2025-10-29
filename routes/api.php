@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->group(function() {
     ]);
 
     // Like Route
-    Route::get('/like/{id}', [LikeController::class, 'like']);
+    Route::put('/like/{id}', [LikeController::class, 'like']);
     
     // Comment Route
     Route::apiResource('/comment', CommentController::class);

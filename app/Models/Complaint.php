@@ -16,12 +16,12 @@ class Complaint extends Model
     // Relation
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function likes()
     {
-        return $this->hasMany(Likes::class, 'user_id');
+        return $this->hasMany(Likes::class, 'complaint_id');
     }
 
     public function comments()
